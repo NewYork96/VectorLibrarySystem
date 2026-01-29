@@ -1,8 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 require_once __DIR__ . '/../models/Book.php';
 
-class BooksController {
+class BookController {
     private $bookModel;
 
     public function __construct() {
@@ -24,15 +27,15 @@ class BooksController {
     public function addbook($title, $author, $publishYear, $isAvailable) {
         return $this->bookModel->create($title, $author, $publishYear, $isAvailable);
     }
-/*
-    public function updatebook($id, $description, $deadline) {
-        return $this->bookModel->update($id, $description, $deadline);
+
+    public function updatebook($id, $title, $author, $publishYear, $isAvailable) {
+        return $this->bookModel->update($id, $title, $author, $publishYear, $isAvailable);
     }
 
     public function deletebook($id) {
         return $this->bookModel->delete($id);
     }
-
+/*
     public function togglebookCompletion($id) {
         return $this->bookModel->toggleComplete($id);
     }*/
