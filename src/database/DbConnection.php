@@ -1,5 +1,5 @@
 <?php
-    // /var/opt/mssql/data/VectorWebShop.mdf
+    require_once __DIR__ . '/../../config/env.php';
     class DbConnection {
 
         public $conn;
