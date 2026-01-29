@@ -1,9 +1,8 @@
 <?php
-require_once __DIR__ . '/../database/DbConnection.php';
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+require_once __DIR__ . '/../database/DbConnection.php';
 
 class Book {
     private $db;
@@ -32,21 +31,21 @@ class Book {
         return sqlsrv_execute($stmt);
 
     }
-/*
-    public function update($id, $author, $publishYear) {
-        $stmt = $this->db->prepare("UPDATE tasks SET author = :author, publishYear = :publishYear WHERE id = :id");
-        $stmt->bindValue(':id', $id, SQLITE3_INTEGER);
-        $stmt->bindValue(':author', $author, SQLITE3_TEXT);
-        $stmt->bindValue(':publishYear', $publishYear, SQLITE3_TEXT);
-        return $stmt->execute() !== false;
+
+    public function update($id, $title, $author, $publishYear, $isAvailable) {
+        $query= "UPDATE Books SET title = ?, author = ?, publishYear = ?, isAvailable = ? WHERE id = ?";
+        $params = [&$title, &$author, &$publishYear, &$isAvailable, &$id];
+        $stmt = sqlsrv_prepare($this->db, $query,  $params);
+        return sqlsrv_execute($stmt);
     }
 
     public function delete($id) {
-        $stmt = $this->db->prepare("DELETE FROM tasks WHERE id = :id");
-        $stmt->bindValue(':id', $id, SQLITE3_INTEGER);
-        return $stmt->execute() !== false;
+        $query= "DELETE FROM Books WHERE id = $id";
+        $params = [$id];
+        $stmt = sqlsrv_prepare($this->db, $query,  $params);
+        return sqlsrv_execute($stmt);
     }
-
+/*
     public function toggleComplete($id) {
         // Lekérjük az aktuális státuszt
         $stmt = $this->db->prepare("SELECT isAvailable FROM tasks WHERE id = :id");

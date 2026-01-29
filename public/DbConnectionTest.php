@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/env.php';
-require_once __DIR__ . '/../src/DbConnection.php';
+require_once __DIR__ . '/../src/database/DbConnection.php';
 
 $db = new DbConnection();
 $conn = $db->getConnection();
