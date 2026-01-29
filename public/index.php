@@ -1,11 +1,20 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-require_once __DIR__ . '/../config/env.php';
-require_once __DIR__ . '/../src/DbConnection.php';
+require_once __DIR__ . '/../src/models/Book.php';
+require_once __DIR__ . '/../src/controllers/booksController.php';
 
-$db = new DbConnection();
-$conn = $db->getConnection();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-echo "success";
+/*$B = new Book();
 
-var_dump($envPath);
+$BC = new BooksController();
+
+$BC->addbook("test2", "John Doe", 2022, 0);
+
+$list = $BC->getbooks();
+var_dump($list);
