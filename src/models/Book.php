@@ -12,7 +12,7 @@ class Book {
     public $publishYear;
     public $isAvailable;
 
-    public function __construct($id = null, $author = '', $publishYear = '', $isAvailable = 0) {
+    public function __construct($id = null, $author = '', $publishYear = '', $isAvailable = 1) {
         $this->id = $id;
         $this->author = $author;
         $this->publishYear = $publishYear;
@@ -24,14 +24,15 @@ class Book {
         $query = "SELECT * FROM Books ORDER BY publishYear ASC";
         return sqlsrv_query($this->db, $query);
     }
-/*
-    public function create($author, $publishYear) {
-        $stmt = $this->db->prepare("INSERT INTO tasks (author, publishYear) VALUES (:author, :publishYear)");
-        $stmt->bindValue(':author', $author, SQLITE3_TEXT);
-        $stmt->bindValue(':publishYear', $publishYear, SQLITE3_TEXT);
-        return $stmt->execute() !== false;
-    }
 
+    public function create($title, $author, $publishYear, $isAvailable) {
+        $query= "INSERT INTO Books (title, author, publishYear, isAvailable) VALUES (?, ?, ?, ?)";
+        $params = [&$title, &$author, &$publishYear, &$isAvailable];
+        $stmt = sqlsrv_prepare($this->db, $query,  $params);
+        return sqlsrv_execute($stmt);
+
+    }
+/*
     public function update($id, $author, $publishYear) {
         $stmt = $this->db->prepare("UPDATE tasks SET author = :author, publishYear = :publishYear WHERE id = :id");
         $stmt->bindValue(':id', $id, SQLITE3_INTEGER);

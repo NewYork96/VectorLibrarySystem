@@ -21,10 +21,10 @@ class BooksController {
         return $books;
     }
 
-    public function addbook($description, $deadline) {
-        return $this->bookModel->create($description, $deadline);
+    public function addbook($title, $author, $publishYear, $isAvailable) {
+        return $this->bookModel->create($title, $author, $publishYear, $isAvailable);
     }
-
+/*
     public function updatebook($id, $description, $deadline) {
         return $this->bookModel->update($id, $description, $deadline);
     }
@@ -35,6 +35,6 @@ class BooksController {
 
     public function togglebookCompletion($id) {
         return $this->bookModel->toggleComplete($id);
-    }
+    }*/
 }
 ?>
