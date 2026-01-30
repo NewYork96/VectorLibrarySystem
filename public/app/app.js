@@ -1,15 +1,28 @@
 
-function loadBooks() {
+function getBooks() {
 
     const url = "/api/getbooks.php"
 
-    fetch(url)
+    return fetch(url)
         .then(response => response.json())
-        .then(result => )
 }
 
-loadBooksList() {
+function renderBookList(books) {
+    const ul = document.getElementById("bookList");
+    ul.innerHTML = ""; // reset
 
+    books.forEach(books => {
+        const li = document.createElement("li"); 1
+        li.textContent = books.Title;
+        ul.appendChild(li);
+    });
+}
+
+function loadBooks() {
+    getBooks()
+        .then(books => {
+            renderBookList(books)
+        });
 }
 
 function addBook(title, author, publishYear, isAvailable) {
@@ -53,3 +66,5 @@ function deleteBook(id) {
         body: formData
     }).then(loadBooks);
 }
+
+document.addEventListener("DOMContentLoaded", loadBooks);
