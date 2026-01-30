@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../controllers/bookController.php';
+require_once __DIR__ . '/../../src/controllers/bookController.php';
 
 $id = $_POST['id'] ?? '';
 
