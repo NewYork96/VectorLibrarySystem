@@ -15,11 +15,8 @@ class BookController {
     public function getbooks() {
         $result = $this->bookModel->getAll();
         $books = [];
-        //while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-        //    $books[] = $row;
         while ($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
             $books[] = $row;
-        //}
         }
         return $books;
     }
@@ -40,4 +37,3 @@ class BookController {
         return $this->bookModel->toggleComplete($id);
     }*/
 }
-?>

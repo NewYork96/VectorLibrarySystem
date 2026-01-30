@@ -3,16 +3,25 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once __DIR__ . '/../src/models/Book.php';
-require_once __DIR__ . '/../src/controllers/bookController.php';
+require_once __DIR__ . '/../src/api/getbooks.php';
+require_once __DIR__ . '/../src/api/deletebook.php';
 
-$B = new Book();
+foreach ($books as $book) {
+    var_dump($book );
+    echo '<br>';
+};
 
-$B->delete(7);
+var_dump($_POST)
+?>
 
-$BC = new BookController();
+<html>
+    <body>
 
-$BC->deletebook(6);
+        <form method="post" action="<?php __DIR__ . '/../src/api/deletebook.php'?>">
+            id: <input type="text" name="id">
+            <input type="submit">
+        </form>
 
-$list = $BC->getbooks();
-var_dump($list);
+    </body>
+</html>
+
