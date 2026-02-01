@@ -1,4 +1,3 @@
-
 function getBooks() {
 
     const url = "/api/getbooks.php"
@@ -9,11 +8,25 @@ function getBooks() {
 
 function renderBookList(books) {
     const ul = document.getElementById("bookList");
-    ul.innerHTML = ""; // reset
+    ul.innerHTML = "";
 
-    books.forEach(books => {
-        const li = document.createElement("li"); 1
-        li.textContent = books.Title;
+    books.forEach(book => {
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            <span>Cím: ${book.Title}</span>
+            <span>Író: ${book.Author}</span>
+            <span>Kiadás éve: ${book.PublishYear}</span>
+            <span>Elérhető: ${book.IsAvailable}</span>
+            <button
+                onclick="updateBook(${book.ID}, '${book.Title}', '${book.Author}', ${book.PublishYear}, ${book.IsAvailable})">
+                Módosítás
+            </button>
+            <button
+                onclick="deleteBook(${book.ID})">
+                Törlés
+            </button>
+        `;
         ul.appendChild(li);
     });
 }
@@ -24,27 +37,20 @@ function loadBooks() {
             renderBookList(books)
         });
 }
+function handleBookFormSubmit() {
+    document.getElementById('book-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
 
-function addBook(title, author, publishYear, isAvailable) {
-    const newTitle = title;
-    const newAuthor = author;
-    const newPublishYear = publishYear;
-    const newIsAvailable = isAvailable;
-    if (newTitle && newAuthor && newPublishYear && newIsAvailable) {
-        const formData = new URLSearchParams({
-            title: newTitle, author: newAuthor, publishYear: newPublishYear, isAvailable: newIsAvailable,
-        });
         fetch('../api/addbook.php', {
             method: 'POST',
             body: formData
         }).then(loadBooks);
-    }
+    });
 }
-
-
 function updateBook(id, title, author, publishYear, isAvailable) {
     const newTitle = prompt("Új cím:", title);
-    const newAuthor = prompt("Új kiadó:", author);
+    const newAuthor = prompt("Új iró:", author);
     const newPublishYear = prompt("Új kiadás éve:", publishYear);
     const newIsAvailable = prompt("Új elérhetőség:", isAvailable);
     if (newTitle && newAuthor && newPublishYear && newIsAvailable) {
@@ -67,4 +73,4 @@ function deleteBook(id) {
     }).then(loadBooks);
 }
 
-document.addEventListener("DOMContentLoaded", loadBooks);
+document.addEventListener("DOMContentLoaded", loadBooks(), handleBookFormSubmit());

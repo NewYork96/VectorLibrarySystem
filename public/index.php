@@ -22,9 +22,26 @@ var_dump($_POST)
 </head>
 <body class="bg-light">
 
-<div class="container py-5">
-  <h1 class="mb-4">Feladatlista</h1>
-  <ul id="bookList"></ul>
+  <div id="list">
+    <h1 class="mb-4">Könvylista</h1>
+    <ul id="bookList"></ul>
+  </div>
+  
+  <div id="create">
+    <form id="book-form" name="book-form" method="get">
+      <label for="title">Cím: </label>
+      <input type="text" name="title"><br><br>
+      <label for="author">Író: </label>
+      <input type="text"  name="author"><br><br>
+          <label for="publishYear">Kiadás éve: </label>
+      <input type="text"  name="publishYear"><br><br>
+          <label for="isAvailable">Kölcsönözhető: </label>
+      <input type="text"  name="isAvailable"><br><br>
+      <input type="submit" value="Submit">
+    </form>  
+  </div>
+
+  <button>Új könyv regisztrálása</button>
 
 <script src="/app/app.js"></script>
 </body>
