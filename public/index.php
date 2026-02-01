@@ -27,7 +27,7 @@ var_dump($_POST)
     <ul id="bookList"></ul>
   </div>
   
-  <div id="create">
+  <div id="create" style="display : none">
     <form id="book-form" name="book-form" method="get">
       <label for="title">Cím: </label>
       <input type="text" name="title"><br><br>
@@ -36,12 +36,11 @@ var_dump($_POST)
           <label for="publishYear">Kiadás éve: </label>
       <input type="text"  name="publishYear"><br><br>
           <label for="isAvailable">Kölcsönözhető: </label>
-      <input type="text"  name="isAvailable"><br><br>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Regisztrálás">
     </form>  
   </div>
 
-  <button>Új könyv regisztrálása</button>
+  <button onclick="showCreateForm()">Új könyv regisztrálása</button>
 
 <script src="/app/app.js"></script>
 </body>

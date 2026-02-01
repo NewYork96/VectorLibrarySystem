@@ -1,3 +1,16 @@
+
+
+function showCreateForm() {
+    let createForm = document.getElementById("create")
+    let display = window.getComputedStyle(createForm).display;
+
+    if (display == "none") {
+        createForm.style.display = "block"
+    } else {
+        createForm.style.display = "none"
+    }
+}
+
 function getBooks() {
 
     const url = "/api/getbooks.php"
@@ -17,9 +30,9 @@ function renderBookList(books) {
             <span>Cím: ${book.Title}</span>
             <span>Író: ${book.Author}</span>
             <span>Kiadás éve: ${book.PublishYear}</span>
-            <span>Elérhető: ${book.IsAvailable}</span>
+            <span>Elérhető: ${book.IsAvailable === 1 ? "Igen" : "Nem"}</span>
             <button
-                onclick="updateBook(${book.ID}, '${book.Title}', '${book.Author}', ${book.PublishYear}, ${book.IsAvailable})">
+                onclick="updateBook(${book.ID}, '${book.Title}', '${book.Author}', ${book.PublishYear})">
                 Módosítás
             </button>
             <button
@@ -52,10 +65,9 @@ function updateBook(id, title, author, publishYear, isAvailable) {
     const newTitle = prompt("Új cím:", title);
     const newAuthor = prompt("Új iró:", author);
     const newPublishYear = prompt("Új kiadás éve:", publishYear);
-    const newIsAvailable = prompt("Új elérhetőség:", isAvailable);
-    if (newTitle && newAuthor && newPublishYear && newIsAvailable) {
+    if (newTitle && newAuthor && newPublishYear) {
         const formData = new URLSearchParams({
-            id, title: newTitle, author: newAuthor, publishYear: newPublishYear, isAvailable: newIsAvailable,
+            id, title: newTitle, author: newAuthor, publishYear: newPublishYear
         });
         fetch('../api/updatebook.php', {
             method: 'POST',

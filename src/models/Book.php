@@ -24,15 +24,15 @@ class Book {
         return sqlsrv_query($this->db, $query);
     }
 
-    public function create($title, $author, $publishYear, $isAvailable) {
-        $query= "INSERT INTO Books (title, author, publishYear, isAvailable) VALUES (?, ?, ?, ?)";
-        $params = [&$title, &$author, &$publishYear, &$isAvailable];
+    public function create($title, $author, $publishYear) {
+        $query= "INSERT INTO Books (title, author, publishYear) VALUES (?, ?, ?)";
+        $params = [&$title, &$author, &$publishYear];
         $stmt = sqlsrv_prepare($this->db, $query,  $params);
         return sqlsrv_execute($stmt);
 
     }
 
-    public function update($id, $title, $author, $publishYear, $isAvailable) {
+    public function update($id, $title, $author, $publishYear) {
         $query= "UPDATE Books SET title = ?, author = ?, publishYear = ?, isAvailable = ? WHERE id = ?";
         $params = [&$title, &$author, &$publishYear, &$isAvailable, &$id];
         $stmt = sqlsrv_prepare($this->db, $query,  $params);

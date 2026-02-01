@@ -21,12 +21,12 @@ class BookController {
         return $books;
     }
 
-    public function addbook($title, $author, $publishYear, $isAvailable) {
-        return $this->bookModel->create($title, $author, $publishYear, $isAvailable);
+    public function addbook($title, $author, $publishYear) {
+        return $this->bookModel->create($title, $author, $publishYear);
     }
 
-    public function updatebook($id, $title, $author, $publishYear, $isAvailable) {
-        return $this->bookModel->update($id, $title, $author, $publishYear, $isAvailable);
+    public function updatebook($id, $title, $author, $publishYear) {
+        return $this->bookModel->update($id, $title, $author, $publishYear);
     }
 
     public function deletebook($id) {
