@@ -34,7 +34,7 @@ class Book {
 
     public function update($id, $title, $author, $publishYear) {
         $query= "UPDATE Books SET title = ?, author = ?, publishYear = ?, isAvailable = ? WHERE id = ?";
-        $params = [&$title, &$author, &$publishYear, &$isAvailable, &$id];
+        $params = [&$title, &$author, &$publishYear, &$id];
         $stmt = sqlsrv_prepare($this->db, $query,  $params);
         return sqlsrv_execute($stmt);
     }

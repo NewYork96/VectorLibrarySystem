@@ -1,0 +1,90 @@
+body {
+    background-color: aqua;
+    display: grid;
+    grid-template-areas:
+        "title title"
+        "list create"
+        "regbutton regbutton";
+    max-width: 80%;
+
+}
+
+h1 {
+    grid-area: title;
+    margin-left: 30px;
+    display: grid;
+}
+
+#book-form {
+    border-style: solid;
+    border-radius: 20%;
+    padding: 20px;
+    margin: 10px;
+    height: fit-content;
+}
+
+#list {
+    display: grid;
+    grid-area: list;
+    border-style: solid;
+    border-radius: 20%;
+    padding: 20px;
+
+}
+
+#create {
+    display: grid;
+    grid-area: create;
+}
+
+
+#regbutton {
+    width: 100px;
+    margin: 10px auto 0px auto;
+    grid-area: regbutton;
+}
+
+span {
+    border-right-style: solid;
+    border-width: 1px;
+    padding-right: 5px;
+}
+
+.fnbuttons {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1022px) {
+    body {
+        display: block;
+        margin: auto;
+    }
+
+    h1 {
+        justify-content: center;
+    }
+
+    #regbutton,
+    #create,
+    #list {
+        width: 90%;
+        margin: 0px auto 10px auto;
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        display: block;
+        margin: auto;
+    }
+
+    #regbutton,
+    #create,
+    #list {
+        width: 70%;
+        margin: 10 px auto 0 auto;
+        display: block;
+    }
+}

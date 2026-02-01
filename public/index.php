@@ -19,11 +19,12 @@ var_dump($_POST)
   <meta charset="UTF-8">
   <title>Vector Library</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
-<body class="bg-light">
+<body>
 
+  <h1 class="mb-4">Könyvlista</h1>
   <div id="list">
-    <h1 class="mb-4">Könvylista</h1>
     <ul id="bookList"></ul>
   </div>
   
@@ -35,12 +36,11 @@ var_dump($_POST)
       <input type="text"  name="author"><br><br>
           <label for="publishYear">Kiadás éve: </label>
       <input type="text"  name="publishYear"><br><br>
-          <label for="isAvailable">Kölcsönözhető: </label>
-      <input type="submit" value="Regisztrálás">
-    </form>  
+      <input type="submit" value="Regisztráció" class="fnbuttons">
+    </form>
   </div>
 
-  <button onclick="showCreateForm()">Új könyv regisztrálása</button>
+  <button onclick="showCreateForm()" id="regbutton">Regisztrációs űrlap</button>
 
 <script src="/app/app.js"></script>
 </body>

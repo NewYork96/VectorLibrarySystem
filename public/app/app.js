@@ -5,7 +5,7 @@ function showCreateForm() {
     let display = window.getComputedStyle(createForm).display;
 
     if (display == "none") {
-        createForm.style.display = "block"
+        createForm.style.display = "grid"
     } else {
         createForm.style.display = "none"
     }
@@ -28,17 +28,19 @@ function renderBookList(books) {
 
         li.innerHTML = `
             <span>Cím: ${book.Title}</span>
-            <span>Író: ${book.Author}</span>
-            <span>Kiadás éve: ${book.PublishYear}</span>
-            <span>Elérhető: ${book.IsAvailable === 1 ? "Igen" : "Nem"}</span>
-            <button
-                onclick="updateBook(${book.ID}, '${book.Title}', '${book.Author}', ${book.PublishYear})">
-                Módosítás
-            </button>
-            <button
-                onclick="deleteBook(${book.ID})">
-                Törlés
-            </button>
+            <span>Cím: ${book.Author}</span>
+            <span>Cím: ${book.PublishYear}</span>
+            <span>Cím: ${book.IsAvailable}</span>
+            <div class="fnbuttons">
+                <button
+                    onclick="updateBook(${book.ID}, '${book.Title}', '${book.Author}', ${book.PublishYear})">
+                    Módosítás
+                </button>
+                <button
+                    onclick="deleteBook(${book.ID})">
+                    Törlés
+                </button>
+            </div>
         `;
         ul.appendChild(li);
     });
