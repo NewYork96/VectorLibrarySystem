@@ -39,7 +39,7 @@ h1 {
 
 
 #regbutton {
-    width: 100px;
+    width: 200px;
     margin: 10px auto 0px auto;
     grid-area: regbutton;
 }

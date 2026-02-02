@@ -15,7 +15,7 @@ Konfiguráció:
         DB_USER=""
         DB_PASS=""
     
-    Ezeket a konfigurációkat a VectorLibrarySystem/config/env.php file-ban lehet módostani.
+    Az .env fájl beolvasásával kapcsolatos adatok config/env.php fájlban lehet módosítani.
 
     Az adatbázis neve Library.
     Egy darab tábla vann neve: Books.
