@@ -1,9 +1,9 @@
 <?php
-require_once __DIR__ . '/../../src/controllers/bookController.php';
+require_once __DIR__ . '/../../src/controllers/bookcontroller.php';
 
-//header('Content-Type: application/json; charset=utf-8');
-
+//Adatok lekérése a BookControllertől
 $controller = new BookController();
 $books = $controller->getbooks();
 
+//Adatok továbbítása a kliens számára
 echo json_encode($books);

@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require_once __DIR__ . '/../models/Book.php';
 
 class BookController {
@@ -12,6 +8,7 @@ class BookController {
         $this->bookModel = new Book();
     }
 
+    //könyvadatok bekérése a modelltől
     public function getbooks() {
         $result = $this->bookModel->getAll();
         $books = [];
@@ -21,19 +18,18 @@ class BookController {
         return $books;
     }
 
+    //létrehzott könyv adatainak továbbítása a model felé
     public function addbook($title, $author, $publishYear) {
         return $this->bookModel->create($title, $author, $publishYear);
     }
 
-    public function updatebook($id, $title, $author, $publishYear) {
-        return $this->bookModel->update($id, $title, $author, $publishYear);
+    //modosított könyvadatok továbbítása a model felé
+    public function updatebook($id, $title, $author, $publishYear, $isAvailable) {
+        return $this->bookModel->update($id, $title, $author, $publishYear, $isAvailable);
     }
-
+    
+    //módosítani kívánt könyv id továbbítása a model felé
     public function deletebook($id) {
         return $this->bookModel->delete($id);
     }
-/*
-    public function togglebookCompletion($id) {
-        return $this->bookModel->toggleComplete($id);
-    }*/
 }

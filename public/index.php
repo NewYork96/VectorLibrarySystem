@@ -22,12 +22,13 @@ var_dump($_POST)
   <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-
-  <h1 class="mb-4">Könyvlista</h1>
+<!-- könyvvek listájának megjelenítése -->
+  <h1>Könyvlista</h1>
   <div id="list">
     <ul id="bookList"></ul>
   </div>
   
+<!-- könyvregisztrációs űrlap -->
   <div id="create" style="display : none">
     <form id="book-form" name="book-form" method="get">
       <label for="title">Cím: </label>
@@ -39,8 +40,9 @@ var_dump($_POST)
       <input type="submit" value="Regisztráció" class="fnbuttons">
     </form>
   </div>
-
-  <button onclick="showCreateForm()" id="regbutton">Regisztrációs űrlap</button>
+  
+<!-- regisztrációs űrlap megjelenítésére és eltüntetésére szolgáló gomb. -->
+  <button onclick="showCreateForm()" id="regbutton">Regisztrációs űrlap megnyitása és bezárása</button>
 
 <script src="/app/app.js"></script>
 </body>

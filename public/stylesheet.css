@@ -27,7 +27,7 @@ h1 {
     display: grid;
     grid-area: list;
     border-style: solid;
-    border-radius: 20%;
+    border-radius: 5%;
     padding: 20px;
 
 }
