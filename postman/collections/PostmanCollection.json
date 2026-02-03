@@ -1,0 +1,215 @@
+{
+  "info": {
+    "_postman_id": "4ccde81d-ca09-40f5-8fb1-bed828628874",
+    "name": "VectorLibraryApiTest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "http://www.vectorlibrary.com/api/updatebook.php?id=3&title=ApiTest&author=ApiTest&publishYear=2222",
+      "id": "46b00632-4e8d-4501-b5e4-7bb5ad1b9070",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"Add your name in the body\"\n}"
+        },
+        "url": {
+          "raw": "http://www.vectorlibrary.com/api/updatebook.php?id=3&title=ApiTest&author=ApiTest&publishYear=2222",
+          "protocol": "http",
+          "host": [
+            "www",
+            "vectorlibrary",
+            "com"
+          ],
+          "path": [
+            "api",
+            "updatebook.php"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "3",
+              "uuid": "30195992-abad-4f45-949c-50ef1b012c92"
+            },
+            {
+              "key": "title",
+              "value": "ApiTest",
+              "uuid": "33c54386-b0db-4371-9ea3-33fbf87348ee"
+            },
+            {
+              "key": "author",
+              "value": "ApiTest",
+              "uuid": "7b041601-7256-4881-995c-8be854df55e6"
+            },
+            {
+              "key": "publishYear",
+              "value": "2222",
+              "uuid": "68c259e5-831d-49a9-a928-f0f0e66beb23"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://www.vectorlibrary.com/api/deletebook.php?id=4",
+      "id": "10a8e382-bf66-4241-825e-c5193463bdc9",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://www.vectorlibrary.com/api/deletebook.php?id=4",
+          "protocol": "http",
+          "host": [
+            "www",
+            "vectorlibrary",
+            "com"
+          ],
+          "path": [
+            "api",
+            "deletebook.php"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "4"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://www.vectorlibrary.com/api/addbook.php?title=ApiTest&author=ApiTest&publishYear=2222",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "33a34318-36a8-4776-a05a-e77a63b4cca5",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "037e8106-fb75-4663-95a0-682ca752dd4e",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://www.vectorlibrary.com/api/addbook.php?title=ApiTest&author=ApiTest&publishYear=2222",
+          "protocol": "http",
+          "host": [
+            "www",
+            "vectorlibrary",
+            "com"
+          ],
+          "path": [
+            "api",
+            "addbook.php"
+          ],
+          "query": [
+            {
+              "key": "title",
+              "value": "ApiTest",
+              "type": "text",
+              "uuid": "7444c139-5a44-47e8-9460-cb5d7617ac61"
+            },
+            {
+              "key": "author",
+              "value": "ApiTest",
+              "type": "text",
+              "uuid": "3a5aa016-0666-4450-ae51-9cfcfc6fb4e9"
+            },
+            {
+              "key": "publishYear",
+              "value": "2222",
+              "type": "text",
+              "uuid": "0951fcb8-6957-4520-90e3-2c5564a293af"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://www.vectorlibrary.com/api/getbooks.php",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a5ec0cf5-4bed-456e-870c-ce9afd7c991d",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "e74a52b3-3538-4d25-bf4a-f488ec93d447",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://www.vectorlibrary.com/api/getbooks.php",
+          "protocol": "http",
+          "host": [
+            "www",
+            "vectorlibrary",
+            "com"
+          ],
+          "path": [
+            "api",
+            "getbooks.php"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -33,3 +33,9 @@ Mezőinformációk:
 Az Apache szerver DocumentRootot elég a public mappára irányítani.
 
 A chart.png tartalmazza a program szerkezeti ábráját.
+
+A Postman collection a postman/collections mappában található. Ezt postmanbe importálva lehet használni.
+
+Jövőbeli fejlesztések:
+-validációk bevezetése
+-hibakezelés
